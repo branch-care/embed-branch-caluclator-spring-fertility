@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Embed Branch Care Calculator Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <span class="logo-text">XYZ <span>Fertility</span></span>
+      </a>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#calculator">Calculator</a></li>
+        <li><a href="#testimonials">Stories</a></li>
+        <li><a href="#calculator" class="btn-nav">Get Started</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Your Path to Parenthood Starts Here</h1>
+    <div class="hero-actions">
+      <a href="#calculator" class="btn-primary">Estimate My Results</a>
+      <a href="#services" class="btn-secondary">Explore Treatments</a>
+    </div>
+  </section>
+
+
+
+  <!-- SERVICES -->
+  <section id="services" class="section">
+    <div class="section-label">What We Offer</div>
+    <h2 class="section-title">Comprehensive Fertility Treatments</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>IVF & ICSI</h3>
+        <p>Our in vitro fertilization program uses the latest lab technology to maximize your chances of success.</p>
+      </div>
+      <div class="card">
+        <h3>Genetic Testing (PGT)</h3>
+        <p>Preimplantation genetic testing to screen embryos and improve outcomes for your growing family.</p>
+      </div>
+      <div class="card">
+        <h3>Egg Freezing</h3>
+        <p>Preserve your fertility on your own timeline with our vitrification egg freezing program.</p>
+      </div>
+      <div class="card">
+        <h3>Donor & Surrogacy</h3>
+        <p>Expert guidance through egg donation, sperm donation, and gestational surrogacy pathways.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section id="calculator" class="calc-section">
+    <div class="calc-inner">
+      <div class="calc-header">
+        <h2 class="section-title">Estimate Your Results</h2>
+        <p class="section-sub">Use our interactive IVF calculator to understand what your fertility journey may result
+          in</p>
+      </div>
+      <div class="calc-frame-wrap">
+        <iframe id="branch-fertility-calculator" src="http://localhost:3001/spring-fertility/ivf"
+          title="Fertility Calculator — Powered by Branch Care">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="testimonials-bg">
+    <div class="section">
+      <div class="section-label">Patient Stories</div>
+      <h2 class="section-title">Families We've Helped Build</h2>
+      <div class="testimonials">
+        <div class="testimonial">
+          <p>"After two failed cycles elsewhere, XYZ's team took the time to really understand our situation. We
+            welcomed twins last spring and couldn't be more grateful."</p>
+          <div class="testimonial-author">— Sarah & Mike T., Chicago</div>
+        </div>
+        <div class="testimonial">
+          <p>"The calculator tool made it so much easier to estimate my results."</p>
+          <div class="testimonial-author">— Priya K., San Francisco</div>
+        </div>
+        <div class="testimonial">
+          <p>"From our first consultation to our daughter's birth, every step felt supported. The staff treated us like
+            family throughout the entire process."</p>
+          <div class="testimonial-author">— Jennifer & Dana R., Boston</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="scripts.js"></script>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">XYZ Fertility</div>
+    <p>123 Blossom Lane, Suite 400 · Chicago, IL 60601 · <a href="tel:+13125550180">(312) 555-0180</a></p>
+    <p style="margin-top:0.8rem;">© 2026 XYZ Fertility Center. Calculator powered by <a href="https://branchcare.com"
+        target="_blank">Branch Care</a>.</p>
+  </footer>
+
+</body>
+
+</html>
