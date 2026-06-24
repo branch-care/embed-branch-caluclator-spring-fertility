@@ -48,8 +48,6 @@ window.addEventListener("message", (event) => {
     return;
   }
 
-  console.log("message received", event.data);
-
   if (isResizeMessage(event.data)) {
     // Resize the iframe to the new height
     calculatorIframeElem.style.height = event.data.height + "px";
@@ -91,6 +89,6 @@ function sendScrollInfo() {
 }
 
 // Send the scroll information on every scroll.
-// Use a passive event listener so that the the browser 
+// Use a passive event listener so that the the browser
 // has permission to keep scrolling without waiting for the event to be handled
 window.addEventListener("scroll", sendScrollInfo, { passive: true });
