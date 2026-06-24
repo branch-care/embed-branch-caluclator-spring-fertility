@@ -1,10 +1,11 @@
 # Branch Care IVF Calculator — Embed Demo
 
-This repository contains a minimal demo showing how to embed the [Branch Care calculator](https://calculator.branchcare.com) into a clinic website using an `<iframe>`.
+This repo contains a minimal demo showing how to embed the [Branch Care calculator](https://calculator.branchcare.com) into a clinic website using an `<iframe>`.
 
 ## Files
 
-- `index.html` — Sample clinic landing page with the calculator embedded
+- `index.html` — Sample clinic landing page with the embedded calculator
+- `scripts.js` — script for communicating with the embedded calculator
 - `styles.css` — Page styles (not required for the embed itself)
 
 ## How to Embed
@@ -22,28 +23,35 @@ Add the following snippet anywhere in your HTML where you want the calculator to
 </iframe>
 ```
 
-### 2. Auto-resize via postMessage
-
-The calculator sends a `branchcare:resize` message whenever its content height changes. Add this script to automatically resize the iframe to fit:
-
-```html
-<script>
-  const iframeEl = document.getElementById('branch-fertility-calculator');
-  window.addEventListener('message', (e) => {
-    if (e.data?.type === 'branchcare:resize') {
-      iframeEl.style.height = e.data.height + 'px';
-    }
-  });
-</script>
-```
-
-A fallback height can be set via CSS in case the message has not yet fired:
+A fallback height can be set via CSS in case the iframe hasn't resized yet:
 
 ```css
 #branch-fertility-calculator {
-  height: 700px; /* fallback; resized dynamically via postMessage */
+  height: 700px;
 }
 ```
+
+### 2. Include the script
+
+Copy `scripts.js` into your project and include it on the page:
+
+```html
+<script src="scripts.js"></script>
+```
+
+The script handles the following `postMessage` events sent by the calculator:
+
+| Message type | Description |
+|---|---|
+| `branchcare:resize` | Resizes the iframe height to fit its content |
+| `branchcare:scroll-to-top` | Scrolls to the top of the iframe |
+| `branchcare:scroll-to-offset` | Scrolls to a position within the iframe |
+
+It also sends scroll position updates back to the calculator on every page scroll.
+
+### WordPress
+
+Paste the iframe and script together into a Custom HTML block. If your editor strips `<script>` tags, use a plugin such as [Insert Headers and Footers](https://wordpress.com/plugins/insert-headers-and-footers) to add the script or enqueue it via your theme's `functions.php`.
 
 ## Notes
 
