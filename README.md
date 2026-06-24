@@ -2,6 +2,8 @@
 
 This repo contains a minimal demo showing how to embed the [Branch IVF Calculator](https://calculator.branchcare.com/spring-fertility/ivf) into a the Spring Fertility website using an `<iframe>`.
 
+A live demo is available on [https://embed-calculator-spring-fertility.vercel.app/](https://embed-calculator-spring-fertility.vercel.app/)
+
 ## Files
 
 - `index.html` — Sample clinic landing page with the embedded calculator
