@@ -1,51 +1,96 @@
-const calculatorIframe = document.getElementById("branch-fertility-calculator");
+const calculatorIframeElem = document.getElementById(
+  "branch-fertility-calculator"
+);
+
+/**
+ * Checks if the message is a resize message
+ * @param {unknown} data - The message data
+ * @returns {boolean} - True if the message is a resize message, false otherwise
+ */
+function isResizeMessage(data) {
+  return (
+    typeof data === "object" &&
+    data !== null &&
+    data.type === "branchcare:resize" &&
+    typeof data.height === "number"
+  );
+}
+
+/**
+ * Checks if the message is a scroll to top message
+ * @param {unknown} data - The message data
+ * @returns {boolean} - True if the message is a scroll to top message, false otherwise
+ */
+function isScrollToTopMessage(data) {
+  return (
+    typeof data === "object" &&
+    data !== null &&
+    data.type === "branchcare:scroll-to-top"
+  );
+}
+
+/**
+ * Checks if the message is a scroll to offset message
+ * @param {unknown} data - The message data
+ * @returns {boolean} - True if the message is a scroll to offset message, false otherwise
+ */
+function isScrollToOffsetMessage(data) {
+  return (
+    typeof data === "object" &&
+    data !== null &&
+    data.type === "branchcare:scroll-to-offset" &&
+    typeof data.offsetInIframe === "number"
+  );
+}
 
 window.addEventListener("message", (event) => {
-  if (!calculatorIframe) {
+  if (!calculatorIframeElem) {
     return;
   }
 
-  // Resize iframe
-  if (event.data?.type === "branchcare:resize" && event.data.height) {
-    calculatorIframe.style.height = event.data.height + "px";
+  console.log("message received", event.data);
+
+  if (isResizeMessage(event.data)) {
+    // Resize the iframe to the new height
+    calculatorIframeElem.style.height = event.data.height + "px";
   }
 
-  // Scroll to top of iframe
-  if (event.data?.type === "branchcare:scroll-to-top") {
+  if (isScrollToTopMessage(event.data)) {
+    // Scroll to top of the iframe
     const iframeTop =
-      calculatorIframe.getBoundingClientRect().top + window.scrollY;
-    console.log("scrolling to top of iframe", iframeTop);
+      calculatorIframeElem.getBoundingClientRect().top + window.scrollY;
     window.scrollTo({ top: iframeTop, behavior: "smooth" });
   }
 
-  // Scroll to offset (to a certain element) in iframe
-  if (
-    event.data?.type === "branchcare:scroll-to-offset" &&
-    event.data.offsetInIframe
-  ) {
-    const iframeTop = iframe.getBoundingClientRect().top + window.scrollY;
+  if (isScrollToOffsetMessage(event.data)) {
+    // Scroll to the given offset in the iframe
+    const iframeTop =
+      calculatorIframeElem.getBoundingClientRect().top + window.scrollY;
+
     window.scrollTo({
-      top: iframeTop + e.data.offsetInIframe,
+      top: iframeTop + event.data.offsetInIframe,
       behavior: "smooth",
     });
   }
 });
 
 function sendScrollInfo() {
-  if (!calculatorIframe) {
+  if (!calculatorIframeElem) {
     return;
   }
 
-  calculatorIframe.contentWindow.postMessage(
+  calculatorIframeElem.contentWindow.postMessage(
     {
       type: "branchcare:scroll",
       parentScrollY: window.scrollY,
       iframeOffsetTop:
-        calculatorIframe.getBoundingClientRect().top + window.scrollY,
+        calculatorIframeElem.getBoundingClientRect().top + window.scrollY,
     },
     "*"
   );
 }
 
-// Send on every scroll
+// Send the scroll information on every scroll.
+// Use a passive event listener so that the the browser 
+// has permission to keep scrolling without waiting for the event to be handled
 window.addEventListener("scroll", sendScrollInfo, { passive: true });
