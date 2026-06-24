@@ -1,6 +1,6 @@
-# Branch Care IVF Calculator — Embed Demo
+# Branch Care IVF Calculator - Embed Demo
 
-This repo contains a minimal demo showing how to embed the [Branch Care calculator](https://calculator.branchcare.com) into a clinic website using an `<iframe>`.
+This repo contains a minimal demo showing how to embed the [Branch IVF Calculator](https://calculator.branchcare.com/spring-fertility/ivf) into a the Spring Fertility website using an `<iframe>`.
 
 ## Files
 
