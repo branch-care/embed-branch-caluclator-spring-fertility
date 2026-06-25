@@ -21,11 +21,12 @@ Add the following snippet anywhere in your HTML where you want the calculator to
   id="branch-fertility-calculator"
   src="https://calculator.branchcare.com/spring-fertility/ivf"
   title="Fertility Calculator"
-  style="display: block; width: 100%; border: none; overflow: hidden;">
+  style="display: block; width: 100%; border: none; overflow: hidden;"
+>
 </iframe>
 ```
 
-A fallback height can be set via CSS in case the iframe hasn't resized yet:
+Styles can be set on the iframe directly or via CSS. A fallback height can also be set in case the iframe hasn't resized yet:
 
 ```css
 #branch-fertility-calculator {
@@ -43,11 +44,11 @@ Copy `scripts.js` into your project and include it on the page:
 
 The script handles the following `postMessage` events sent by the calculator:
 
-| Message type | Description |
-|---|---|
-| `branchcare:resize` | Resizes the iframe height to fit its content |
-| `branchcare:scroll-to-top` | Scrolls to the top of the iframe |
-| `branchcare:scroll-to-offset` | Scrolls to a position within the iframe |
+| Message type                  | Description                                  |
+| ----------------------------- | -------------------------------------------- |
+| `branchcare:resize`           | Resizes the iframe height to fit its content |
+| `branchcare:scroll-to-top`    | Scrolls to the top of the iframe             |
+| `branchcare:scroll-to-offset` | Scrolls to a position within the iframe      |
 
 It also sends scroll position updates back to the calculator on every page scroll.
 
