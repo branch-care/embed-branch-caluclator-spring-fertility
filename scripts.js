@@ -83,6 +83,7 @@ function sendScrollInfo() {
       parentScrollY: window.scrollY,
       iframeOffsetTop:
         calculatorIframeElem.getBoundingClientRect().top + window.scrollY,
+      viewportHeight: window.innerHeight,
     },
     "*"
   );
